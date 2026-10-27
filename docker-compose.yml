@@ -1,0 +1,50 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        PRELOAD_MODEL: "false"
+    image: chatbot-tafsir-backend:latest
+    container_name: chatbot-tafsir-backend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8001:8001"   # hanya localhost, nginx yang proxy dari luar
+    env_file:
+      - .env
+    volumes:
+      - hf_cache:/root/.cache/huggingface
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 120s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+        reservations:
+          memory: 3G
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: "https://backend-tafsir.ift.my.id"
+    image: chatbot-tafsir-frontend:latest
+    container_name: chatbot-tafsir-frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:80"    # nginx di VPS proxy dari chatbot-tafsir.ift.myid ke sini
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+volumes:
+  hf_cache:
+    driver: local

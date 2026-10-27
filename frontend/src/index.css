@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+    --bg-app: #f1f7f4;
+    --bg-header: rgba(255, 255, 255, 0.95);
+    --bg-card: #ffffff;
+    --bg-card-secondary: #eaf4ef;
+    --bg-card-hover: #f7fbf9;
+    --border-card: #d1e7dd;
+    --border-card-hover: #10b981;
+    --text-title: #072019;
+    --text-body: #173e33;
+    --text-muted: #4d7a6c;
+    --text-arabic: #082920;
+    --pill-bg: #e3f2ec;
+    --pill-text: #0d6e50;
+    --pill-border: #bce2d4;
+    --input-bg: #ffffff;
+    --input-border: #cbe3d8;
+  }
+
+  .dark {
+    --bg-app: #072019;
+    --bg-header: rgba(10, 42, 33, 0.95);
+    --bg-card: #0d2f26;
+    --bg-card-secondary: #08221b;
+    --bg-card-hover: #123d32;
+    --border-card: #194e41;
+    --border-card-hover: #34d399;
+    --text-title: #ffffff;
+    --text-body: #d1fae5;
+    --text-muted: #8ecbb9;
+    --text-arabic: #f0fdf4;
+    --pill-bg: rgba(5, 22, 17, 0.7);
+    --pill-text: #6ee7b7;
+    --pill-border: #1a4f42;
+    --input-bg: #051914;
+    --input-border: #184c3f;
+  }
+
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-body);
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Application Component Classes */
+.theme-app-bg {
+  background-color: var(--bg-app);
+}
+
+.theme-header {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-card);
+}
+
+.theme-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-body);
+  transition: all 0.2s ease-in-out;
+}
+
+.theme-card:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+}
+
+.theme-card-secondary {
+  background-color: var(--bg-card-secondary);
+  border: 1px solid var(--border-card);
+}
+
+.theme-title {
+  color: var(--text-title);
+}
+
+.theme-body {
+  color: var(--text-body);
+}
+
+.theme-muted {
+  color: var(--text-muted);
+}
+
+.theme-arabic {
+  color: var(--text-arabic);
+}
+
+.theme-pill {
+  background-color: var(--pill-bg);
+  color: var(--pill-text);
+  border: 1px solid var(--pill-border);
+}
+
+.theme-input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-title);
+}
+
+.theme-input:focus {
+  border-color: #10b981;
+}
+
+/* Quranic text rendering */
+.quran-text {
+  font-family: 'Amiri', 'Scheherazade New', serif;
+  line-height: 2.3;
+  word-spacing: 5px;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Scrollbars */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.25);
+  border-radius: 9999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.45);
+}
