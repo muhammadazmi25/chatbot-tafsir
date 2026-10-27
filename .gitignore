@@ -11,6 +11,27 @@
 *.crt
 
 # ==========================================
+# Non-Production Scripts & Testing
+# ==========================================
+# Root maintenance, audit, and restoration scripts
+audit_*.py
+batch_restore_*.py
+check_*.py
+extract_*.py
+pdf_to_word_converter.py
+restore_*.py
+test_*.py
+
+# Test suites & test files
+tests/
+test/
+__tests__/
+*_test.py
+
+# Maintenance & data pipeline scripts directory
+scripts/
+
+# ==========================================
 # Python & Virtual Environments
 # ==========================================
 __pycache__/
